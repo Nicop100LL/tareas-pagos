@@ -1,0 +1,14 @@
+<!-- Font Awesone -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+{% extends 'tareas/principal.html' %} {% block content %}
+
+<p>¿Estas seguro que quieres eliminar "{{tarea}}"?</p>
+<a href="{% url 'enero' %}">Cancelar</a>
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <input class="btn" type="submit" name="Confirmar" />
+</form>
+
+{% endblock %}

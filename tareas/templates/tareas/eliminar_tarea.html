@@ -1,0 +1,12 @@
+{% extends 'tareas/principal.html' %} {% block content %}
+
+<p>¿Estas seguro que quieres eliminar "{{tarea}}"?</p>
+<a href="{% url 'febrero' %}">Cancelar</a>
+
+<form action="" method="POST">
+  {% csrf_token %}
+
+  <input class="btn" type="submit" name="Confirmar" />
+</form>
+
+{% endblock %}

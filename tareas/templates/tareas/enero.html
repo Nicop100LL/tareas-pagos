@@ -1,0 +1,33 @@
+{% extends 'tareas/principal.html' %} {% block content %}
+<div class="row">
+  <div class="col l2"></div>
+
+  <div class="col s12 m6 l8">
+    <form action="/enero/" method="POST">
+      {% csrf_token %} {{form.titulo}}
+      <input type="submit" class="btn" name="Crear Tarea" />
+    </form>
+
+    {% for tarea1 in tareas %}
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text" style="padding: 9px 30px; ">
+        {% if tarea1.completado == True %}
+        <strike class="card-title">{{tarea1.titulo}}</strike>
+
+        {% else %}
+        <span class="card-title">{{tarea1.titulo}}</span>
+
+        {% endif %}
+      </div>
+      <div class="card-action">
+        <a href="{% url 'editar_tarea1' tarea1.id %}">Editar</a>
+        <a href="{% url 'eliminar_tarea1' tarea1.id %}">Borrar</a>
+      </div>   
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="col l2"></div>
+</div>
+
+{% endblock %}
