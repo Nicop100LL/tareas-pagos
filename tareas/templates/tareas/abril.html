@@ -1,31 +1,31 @@
 {% extends 'tareas/principal.html' %} {% block content %}
 <div class="row">
   <div class="container">
-    <h5><i class="mediun material-icons"">chevron_right</i>Marzo</h5>
+    <h5><i class="mediun material-icons"">chevron_right</i>Abril</h5>
   </div>
   <div class="col l2">
   </div>
 
   <div class="col s12 m6 l8">
-    <form action="/marzo/" method="POST">
+    <form action="/abril/" method="POST">
       {% csrf_token %} {{form.titulo}}
       <button type="submit" class="btn">Crear tarea</button>
     </form>
 
-    {% for tarea_marzo in tareas %}
+    {% for tarea_abril in tareas %}
     <div class="card blue-grey darken-1">
       <div class="card-content white-text" style="padding: 9px 30px; ">
-        {% if tarea_marzo.completado == True %}
-        <strike class="card-title">{{tarea_marzo.titulo}}</strike>
+        {% if tarea_abril.completado == True %}
+        <strike class="card-title">{{tarea_abril.titulo}}</strike>
 
         {% else %}
-        <span class="card-title">{{tarea_marzo.titulo}}</span>
+        <span class="card-title">{{tarea_abril.titulo}}</span>
 
         {% endif %}
       </div>
       <div class="card-action" style="padding: 5px 15px;">
-        <a href="{% url 'editar_tarea_marzo' tarea_marzo.id %}"><i class="tiny material-icons" style="padding-right: 5px;">edit</i>Editar</a>
-        <a href="{% url 'eliminar_tarea_marzo' tarea_marzo.id %}"><i class="tiny material-icons" style="padding-right: 5px;">delete</i>Borrar</a>
+        <a href="{% url 'editar_tarea_abril' tarea_abril.id %}"><i class="tiny material-icons" style="padding-right: 5px;">edit</i>Editar</a>
+        <a href="{% url 'eliminar_tarea_abril' tarea_abril.id %}"><i class="tiny material-icons" style="padding-right: 5px;">delete</i>Borrar</a>
       </div>   
     </div>
     {% endfor %}

@@ -1,0 +1,36 @@
+{% extends 'tareas/principal.html' %} {% block content %}
+<div class="row">
+  <div class="container">
+    <h5><i class="mediun material-icons"">chevron_right</i>Junio</h5>
+  </div>
+  <div class="col l2"></div>
+
+  <div class="col s12 m6 l8">
+    <form action="/junio/" method="POST">
+      {% csrf_token %} {{form.titulo}}
+      <button type="submit" class="btn">Crear tarea</button>
+    </form>
+
+    {% for tarea_junio in tareas %}
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text" style="padding: 9px 30px; ">
+        {% if tarea_junio.completado == True %}
+        <strike class="card-title">{{tarea_junio.titulo}}</strike>
+
+        {% else %}
+        <span class="card-title">{{tarea_junio.titulo}}</span>
+
+        {% endif %}
+      </div>
+      <div class="card-action" style="padding: 5px 15px;">
+        <a href="{% url 'editar_tarea_junio' tarea_junio.id %}"><i class="tiny material-icons" style="padding-right: 5px;">edit</i>Editar</a>
+        <a href="{% url 'eliminar_tarea_junio' tarea_junio.id %}"><i class="tiny material-icons" style="padding-right: 5px;">delete</i>Borrar</a>
+      </div>   
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="col l2"></div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'tareas/principal.html' %} {% block content %}
+<h5>Editar Tarea</h5>
+
+<form action="" method="POST">
+  {% csrf_token %} {{form.titulo}}
+
+  <label for="completado">
+    <input
+      type="checkbox"
+      id="completado"
+      name="completado"
+      value={{form.completado}}
+    <span></span>
+  </label>
+  <button type="submit" class="btn">Editar</button>
+</form>
+
+{% endblock %}

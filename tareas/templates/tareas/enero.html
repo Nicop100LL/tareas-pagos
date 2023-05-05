@@ -1,16 +1,19 @@
 {% extends 'tareas/principal.html' %} {% block content %}
 <div class="row">
+  <div class="container">
+    <h5><i class="mediun material-icons"">chevron_right</i>Enero</h5>
+  </div>
   <div class="col l2"></div>
 
   <div class="col s12 m6 l8">
     <form action="/enero/" method="POST">
       {% csrf_token %} {{form.titulo}}
-      <input type="submit" class="btn" name="Crear Tarea" />
+      <button type="submit" class="btn">Crear tarea</button>
     </form>
 
     {% for tarea1 in tareas %}
     <div class="card blue-grey darken-1">
-      <div class="card-content white-text" style="padding: 9px 30px; ">
+      <div class="card-content white-text" style="padding: 9px 30px;">
         {% if tarea1.completado == True %}
         <strike class="card-title">{{tarea1.titulo}}</strike>
 
@@ -19,9 +22,9 @@
 
         {% endif %}
       </div>
-      <div class="card-action">
-        <a href="{% url 'editar_tarea1' tarea1.id %}">Editar</a>
-        <a href="{% url 'eliminar_tarea1' tarea1.id %}">Borrar</a>
+      <div class="card-action" style="padding: 5px 15px;">
+        <a href="{% url 'editar_tarea1' tarea1.id %}"><i class="tiny material-icons" style="padding-right: 5px;">edit</i>Editar</a>
+        <a href="{% url 'eliminar_tarea1' tarea1.id %}"><i class="tiny material-icons" style="padding-right: 5px;">delete</i>Borrar</a>
       </div>   
     </div>
     {% endfor %}
